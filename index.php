@@ -1,10 +1,16 @@
 <?php
 @session_start();
-require_once $pRoot.'/Libraries/SessionVars.php';
+
 $_SESSION['pRoot'] = dirname(__FILE__);
+$_SESSION['pRootHtml'] = 'http://' . $_SERVER['SERVER_NAME'] . '/Backups';
 $pRoot = $_SESSION['pRoot'];
+$pRootHtml = $_SESSION['pRootHtml'];
+
+require_once $pRoot . '/Libraries/SessionVars.php';
+
 $sess = new SessionVars();
-if ($sess->exist() && $sess->varExist('user')==false) {
+
+if (!$sess->varExist('user')) {
     ?>
 
     <!DOCTYPE html>
@@ -16,8 +22,7 @@ if ($sess->exist() && $sess->varExist('user')==false) {
             <script type="text/javascript" src="Views/js/login.js"></script>
             <link rel="stylesheet" type="text/css" href="Views/css/stylesLogin.css">
         </head>
-        <body onkeyup = "if (event.keyCode == 13)
-                    login();">
+        <body onkeyup = "if (event.keyCode == 13) login();">
             <div id="loading" class="loading">
                 <div class="logo-load">
                     <div class="preloader-wrapper big active valign-wrapper">
@@ -67,8 +72,8 @@ if ($sess->exist() && $sess->varExist('user')==false) {
     <?php
 } else {
 
-
-    $route = $pRoot . '/Views/index.php';
-     header("location: $route");
+    header("Location: $pRootHtml/Views/index.php");
+    
 }
+
 ?>
