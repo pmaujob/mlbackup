@@ -19,6 +19,12 @@ class DataFiles {
     private $dirConf = null;
     private $directories = array();
     private $directoriesJson = null;
+<<<<<<< HEAD
+    private $findInfo = false;
+    private $findDirConf = false;
+    private $findUsed = false;
+=======
+>>>>>>> origin/master
 
     public function getArea() {
         return $this->area;
@@ -64,6 +70,21 @@ class DataFiles {
         return $this->lastIp;
     }
 
+<<<<<<< HEAD
+    public function getFindInfo() {
+        return $this->findInfo;
+    }
+
+    public function getFindDirConf() {
+        return $this->findDirConf;
+    }
+
+    public function getFindUsed() {
+        return $this->findUsed;
+    }
+
+=======
+>>>>>>> origin/master
     private function setArea($area) {
         $this->area = $area;
     }
@@ -95,7 +116,11 @@ class DataFiles {
     private function setLastIp($lastIp) {
         $this->lastIp = $lastIp;
     }
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/master
     private function setDirConf($dirConf) {
         $this->dirConf = $dirConf;
     }
@@ -108,6 +133,21 @@ class DataFiles {
         $this->directoriesJson = $directoriesJson;
     }
 
+<<<<<<< HEAD
+    private function setFindInfo($findInfo) {
+        $this->findInfo = $findInfo;
+    }
+
+    private function setFindDirConf($findDirConf) {
+        $this->findDirConf = $findDirConf;
+    }
+
+    private function setFindUsed($findUsed) {
+        $this->findUsed = $findUsed;
+    }
+
+=======
+>>>>>>> origin/master
     private function getDirectoriesToJson() {
 
         $dirs = array();
@@ -127,9 +167,22 @@ class DataFiles {
         $dirConf = $user . "-dirsconf.txt";
         $dirUsed = $user . "-used.txt";
 
+<<<<<<< HEAD
+        if (file_exists($dirInfo))
+            $this->setFindInfo(true);
+        if (file_exists($dirConf))
+            $this->setFindDirConf(true);
+        if (file_exists($dirUsed))
+            $this->setFindUsed(true);
+
+        try {
+
+            if ($this->getFindInfo()) {
+=======
         try {
 
             if (file_exists($dirInfo)) {
+>>>>>>> origin/master
 
                 $file = fopen($dirInfo, "r");
 
@@ -193,12 +246,19 @@ class DataFiles {
                         if ($resRow !== false) {
                             $this->setLastIp(str_replace('=', '', stristr($strFull, '=', false)));
                         }
+<<<<<<< HEAD
+=======
                         
+>>>>>>> origin/master
                     }
 
                     fclose($file);
 
+<<<<<<< HEAD
+                    if ($this->getFindUsed()) {
+=======
                     if (file_exists($dirUsed)) {
+>>>>>>> origin/master
 
                         $fileUsed = fopen($dirUsed, "r");
 
@@ -219,15 +279,23 @@ class DataFiles {
 
                             $this->setDirectories($rowsUsed);
                             $this->setDirectoriesJson($this->getDirectoriesToJson());
+<<<<<<< HEAD
+                        } else {
+=======
                             
                         }else{
+>>>>>>> origin/master
                             $this->setDirectoriesJson(null);
                         }
 
                         fclose($fileUsed);
                     }
 
+<<<<<<< HEAD
+                    if ($this->getFindDirConf()) {
+=======
                     if (file_exists($dirConf)) {
+>>>>>>> origin/master
 
                         $fileConf = fopen($dirConf, "r");
 
